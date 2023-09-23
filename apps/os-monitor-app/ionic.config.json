@@ -1,0 +1,7 @@
+{
+  "name": "os-monitor-app --type=vue",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue-vite"
+}
