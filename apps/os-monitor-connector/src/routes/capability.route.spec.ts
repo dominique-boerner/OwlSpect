@@ -1,7 +1,7 @@
 import { ConnectorResponse } from "../../../shared/models/connector-response.interface.ts";
 import { application } from "./../index.ts";
 import { Capabilities } from "../../../shared/models/capability.interface.ts";
-import { getRegisteredRoutes } from "../route.util.ts";
+import { getRegisteredRoutes } from "../util/route.util.ts";
 
 const supertest = require("supertest");
 

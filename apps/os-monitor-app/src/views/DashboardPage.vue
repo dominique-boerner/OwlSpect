@@ -14,6 +14,7 @@ import OsmRamTile from "@/components/OsmRamTile.vue";
           <osm-tile is-empty></osm-tile>
         </ion-row>
       </ion-grid>
+      <ion-button color="primary">Test</ion-button>
     </IonContent>
   </IonPage>
 </template>
