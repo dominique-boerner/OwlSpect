@@ -1,6 +1,12 @@
 import { CpuInfo } from "os";
+import { ConnectorResponse } from "./connector-response.interface";
 
-/**
- * Interface for cpu information.
- */
-export interface Cpu extends CpuInfo {}
+export type CpuSpeed = {
+  averageSpeedMhz: number;
+  averageSpeedGhz: number;
+};
+
+export type CpuResponse = ConnectorResponse<{
+  cpus: CpuInfo[];
+  averageSpeed: CpuSpeed;
+}>;

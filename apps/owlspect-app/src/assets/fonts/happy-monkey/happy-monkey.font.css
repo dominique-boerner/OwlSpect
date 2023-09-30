@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Happy Monkey';
+    src: url('HappyMonkey-Regular.woff2') format('woff2'),
+        url('HappyMonkey-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
