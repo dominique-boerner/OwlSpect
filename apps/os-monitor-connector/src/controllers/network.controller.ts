@@ -4,11 +4,12 @@ import { StatusCodes } from "http-status-codes";
 import { Network } from "../../../shared/models/machine-information.interface.ts";
 import networkService from "../services/network.service.ts";
 import { NetworkInterfaceInfo } from "os";
+import { logger, LogLevels } from "../util/logger.util.ts";
 
 async function getNetwork(req: Request, res: Response) {
   try {
+    logger.log(LogLevels.INFO, "get network");
     const network: Network = await networkService.getNetwork();
-
     const okResponse: ConnectorResponse<Network> = {
       status: StatusCodes.OK,
       response: network,
@@ -16,6 +17,7 @@ async function getNetwork(req: Request, res: Response) {
     res.send(okResponse);
   } catch (err) {
     const error = err as Error;
+    logger.log(LogLevels.ERROR, "failed getting network: %s", err);
     const errorResponse: ConnectorResponse<Network> = {
       status: StatusCodes.INTERNAL_SERVER_ERROR,
       response: null,
@@ -29,6 +31,7 @@ async function getSpecificNetwork(req: Request, res: Response) {
   try {
     const params = req.params;
     const networkParam = params.network;
+    logger.log(LogLevels.INFO, "get specific network %s", networkParam);
 
     const network: NetworkInterfaceInfo[] =
       await networkService.getSpecificNetwork(networkParam);
@@ -40,6 +43,7 @@ async function getSpecificNetwork(req: Request, res: Response) {
     res.send(okResponse);
   } catch (err) {
     const error = err as Error;
+    logger.log(LogLevels.ERROR, "failed getting network: %s", err);
     const errorResponse: ConnectorResponse<NetworkInterfaceInfo[]> = {
       status: StatusCodes.INTERNAL_SERVER_ERROR,
       response: null,

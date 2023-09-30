@@ -21,7 +21,7 @@ registerRoute(
 registerRoute(
   {
     basePath: memoryRouteBaseUrl,
-    path: "free",
+    path: "/free",
     name: "GET_MEMORY_FREE",
     caption: "Get free memory information",
     description: "Get information about the free memory of the host system.",

@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { logger, LogLevels } from "./logger.util.ts";
 
 // todo: reduce basePath and path into only one property.
 interface Route {
@@ -23,10 +24,7 @@ let routes: Route[] = [];
  * @param fn {any} the function to call
  */
 export function registerRoute(route: Route, router: Router, fn: any) {
-  if (route.path.startsWith("/")) {
-    throw new Error(`(${route.path}) => route.path should not start with '/'.`);
-  }
-
+  logger.log(LogLevels.DEBUG, "register route %s", route);
   const port = process.env.PORT ?? 3000;
   let fullPath =
     route.path === "" ? route.basePath : `${route.basePath}${route.basePath}`;
@@ -35,6 +33,7 @@ export function registerRoute(route: Route, router: Router, fn: any) {
     ...route,
     fullPath,
   });
+  router.get(route.path, fn);
   return router;
 }
 

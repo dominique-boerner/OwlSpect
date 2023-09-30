@@ -8,6 +8,7 @@ import memoryRoute, { memoryRouteBaseUrl } from "./routes/memory.route.ts";
 import capabilityRoute, {
   capabilityRouteBaseUrl,
 } from "./routes/capability.route.ts";
+import { logger, LogLevels } from "./util/logger.util.ts";
 
 dotenv.config();
 
@@ -31,5 +32,8 @@ app.get("/healthcheck", (req, res) => {
 });
 
 export const application = app.listen(port, () => {
-  console.log(`⚡️[server]: os-monitor is running at http://localhost:${port}`);
+  logger.log(
+    LogLevels.INFO,
+    `⚡️[server]: os-monitor-connector is running at http://localhost:${port}`,
+  );
 });
