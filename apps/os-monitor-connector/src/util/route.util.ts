@@ -1,11 +1,12 @@
 import { Router } from "express";
 
+// todo: reduce basePath and path into only one property.
 interface Route {
   basePath: string;
   path: string;
+  fullPath?: string;
   name: string;
   caption: string;
-  fullPath?: string;
   description: string;
 }
 
@@ -26,11 +27,10 @@ export function registerRoute(route: Route, router: Router, fn: any) {
     throw new Error(`(${route.path}) => route.path should not start with '/'.`);
   }
 
-  const path = route.path.endsWith("/") ? route.path.slice(0, -1) : route.path;
-  const fullPath =
-    route.path === "" ? route.basePath : `${route.basePath}/${path}`;
-
-  router.get(path, fn);
+  const port = process.env.PORT ?? 3000;
+  let fullPath =
+    route.path === "" ? route.basePath : `${route.basePath}${route.basePath}`;
+  fullPath = `http://localhost:${port}${fullPath}`;
   routes.push({
     ...route,
     fullPath,
