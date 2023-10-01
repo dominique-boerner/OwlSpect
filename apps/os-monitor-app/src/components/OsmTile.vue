@@ -1,15 +1,24 @@
 <script setup lang="ts">
 defineProps<{
   isEmpty?: boolean;
+  label?: string;
+  value?: string;
+  suffix?: string;
 }>();
 </script>
 
 <template>
   <ion-card class="osm-tile" :class="{ empty: isEmpty }">
-    <ion-card-content v-if="!isEmpty">
-      <slot></slot>
+    <ion-text class="label">{{ label }}</ion-text>
+    <ion-card-content v-if="!isEmpty" class="content">
+      <ion-text v-if="value" class="chart-value">
+        {{ value }}
+      </ion-text>
+      <ion-text v-if="suffix" class="chart-value-suffix">
+        {{ suffix }}
+      </ion-text>
     </ion-card-content>
-    <ion-card-content v-else>
+    <ion-card-content v-else class="content centered">
       <vue-feather
         size="3rem"
         type="plus-circle"
@@ -23,9 +32,7 @@ defineProps<{
 .osm-tile {
   display: flex;
   justify-content: center;
-  align-items: center;
   box-shadow: none;
-  aspect-ratio: 1;
   border-radius: 10px;
   background: linear-gradient(
     47deg,
@@ -34,10 +41,11 @@ defineProps<{
   );
   transition: ease-in-out;
   color: black;
-  width: 144px;
   flex-direction: column;
-  margin: 7px;
-  padding: 0;
+  margin: 0;
+  padding: 12px;
+  aspect-ratio: 1;
+  width: 150px;
 
   &.empty {
     background: none;
@@ -47,6 +55,32 @@ defineProps<{
 
   &:active {
     opacity: 0.4;
+  }
+
+  .content {
+    padding: 0;
+
+    &.centered {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .label {
+    display: block;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+
+  .chart-value {
+    font-weight: bold;
+    font-size: 2rem;
+  }
+
+  .chart-value-suffix {
+    display: flex;
+    font-size: 0.8rem;
   }
 }
 </style>

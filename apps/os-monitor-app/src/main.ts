@@ -2,6 +2,9 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
 
+/* Charts */
+import VueApexCharts from "vue3-apexcharts";
+
 /* Feather Icons */
 import VueFeather from "vue-feather";
 
@@ -27,6 +30,7 @@ import "@ionic/vue/css/display.css";
 const app = createApp(App)
   .use(IonicVue)
   .use(router)
+  .use(VueApexCharts)
   .component(VueFeather.name, VueFeather);
 
 router.isReady().then(() => {
