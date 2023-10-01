@@ -25,13 +25,7 @@ const filename =
   ".log";
 const options = {
   level: mode === "dev" ? LogLevels.DEBUG : LogLevels.ERROR,
-  transports: [
-    new winston.transports.Console(),
-    new winston.transports.File({
-      filename,
-      format: winston.format.combine(winston.format.uncolorize()),
-    }),
-  ],
+  transports: [new winston.transports.Console()],
   format: combine(
     format.label({ label: path.basename(process.mainModule!.filename) }),
     format.colorize(),
@@ -43,5 +37,15 @@ const options = {
     ),
   ),
 };
+
+const writeLogsToFile = process.env.WRITE_LOGS_TO_FILE ?? true;
+if (!writeLogsToFile) {
+  const fileTransport = new winston.transports.File({
+    filename,
+    format: winston.format.combine(winston.format.uncolorize()),
+  });
+  // we need to use as any here, because winston doesn't support TypeScript at default
+  options.transports.push(fileTransport as any);
+}
 
 export const logger = winston.createLogger(options);
