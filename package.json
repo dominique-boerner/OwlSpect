@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "main": "app/os-monitor-connector/src/index.ts",
   "scripts": {
-    "build": "npx tsc",
+    "build:local": ".\\scripts\\build-os-monitor.ps1",
     "start": "node dist/index.js",
     "dev": "concurrently \"npm run dev:app\" \"npm run dev:connector\"",
     "dev:app": "cd apps/os-monitor-app && npm run dev",

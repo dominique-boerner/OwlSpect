@@ -1,14 +1,14 @@
 import express, { Express } from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import cpuRoute, { cpuRouteBaseUrl } from "./routes/cpu.route.ts";
-import infoRoute, { infoRouteBaseUrl } from "./routes/info.route.ts";
-import networkRoute, { networkRouteBaseUrl } from "./routes/network.route.ts";
-import memoryRoute, { memoryRouteBaseUrl } from "./routes/memory.route.ts";
+import cpuRoute, { cpuRouteBaseUrl } from "./routes/cpu.route";
+import infoRoute, { infoRouteBaseUrl } from "./routes/info.route";
+import networkRoute, { networkRouteBaseUrl } from "./routes/network.route";
+import memoryRoute, { memoryRouteBaseUrl } from "./routes/memory.route";
 import capabilityRoute, {
   capabilityRouteBaseUrl,
-} from "./routes/capability.route.ts";
-import { logger, LogLevels } from "./util/logger.util.ts";
+} from "./routes/capability.route";
+import { logger, LogLevels } from "./util/logger.util";
 
 dotenv.config();
 

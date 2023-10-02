@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import { ConnectorResponse } from "../../../shared/models/connector-response.interface.ts";
+import { ConnectorResponse } from "../../../shared/models/connector-response.interface";
 import { StatusCodes } from "http-status-codes";
-import { Memory } from "../../../shared/models/memory.interface.ts";
-import memoryService from "../services/memory.service.ts";
-import { logger, LogLevels } from "../util/logger.util.ts";
+import { Memory } from "../../../shared/models/memory.interface";
+import memoryService from "../services/memory.service";
+import { logger, LogLevels } from "../util/logger.util";
 
 async function getMemory(req: Request, res: Response) {
   try {

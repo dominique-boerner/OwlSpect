@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
-import { ConnectorResponse } from "../../../shared/models/connector-response.interface.ts";
+import { ConnectorResponse } from "../../../shared/models/connector-response.interface";
 import { StatusCodes } from "http-status-codes";
-import { Network } from "../../../shared/models/machine-information.interface.ts";
-import networkService from "../services/network.service.ts";
+import { Network } from "../../../shared/models/machine-information.interface";
+import networkService from "../services/network.service";
 import { NetworkInterfaceInfo } from "os";
-import { logger, LogLevels } from "../util/logger.util.ts";
+import { logger, LogLevels } from "../util/logger.util";
 
 async function getNetwork(req: Request, res: Response) {
   try {

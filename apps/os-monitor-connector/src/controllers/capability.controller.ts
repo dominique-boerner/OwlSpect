@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import { ConnectorResponse } from "../../../shared/models/connector-response.interface.ts";
+import { ConnectorResponse } from "../../../shared/models/connector-response.interface";
 import { StatusCodes } from "http-status-codes";
-import capabilityService from "../services/capability.service.ts";
-import { Capabilities } from "../../../shared/models/capability.interface.ts";
-import { logger, LogLevels } from "../util/logger.util.ts";
+import capabilityService from "../services/capability.service";
+import { Capabilities } from "../../../shared/models/capability.interface";
+import { logger, LogLevels } from "../util/logger.util";
 
 async function getCapabilities(req: Request, res: Response) {
   try {

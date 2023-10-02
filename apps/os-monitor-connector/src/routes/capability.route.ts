@@ -1,5 +1,5 @@
 import express from "express";
-import capabilityController from "../controllers/capability.controller.ts";
+import capabilityController from "../controllers/capability.controller";
 
 const router = express();
 

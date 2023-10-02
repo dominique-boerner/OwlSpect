@@ -1,5 +1,5 @@
 import os from "node:os";
-import { Cpu } from "../../../shared/models/cpu.interface.ts";
+import { Cpu } from "../../../shared/models/cpu.interface";
 
 async function getCpuCores(): Promise<Cpu[]> {
   try {

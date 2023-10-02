@@ -1,14 +1,12 @@
 {
   "compilerOptions": {
-    "outDir": "./dist/os-monitor-connector",
+    "outDir": "./dist/os-monitor",
     "target": "es2016",
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
-    "allowImportingTsExtensions": true,
-    "noEmit": true,
 
     /* Linting */
     "strict": true

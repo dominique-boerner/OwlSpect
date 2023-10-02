@@ -1,5 +1,5 @@
 import os from "node:os";
-import { Memory } from "../../../shared/models/memory.interface.ts";
+import { Memory } from "../../../shared/models/memory.interface";
 
 async function getMemory(): Promise<Memory> {
   try {

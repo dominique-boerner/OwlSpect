@@ -1,6 +1,6 @@
 import express from "express";
-import infoController from "../controllers/info.controller.ts";
-import { registerRoute } from "../util/route.util.ts";
+import infoController from "../controllers/info.controller";
+import { registerRoute } from "../util/route.util";
 
 const router = express();
 

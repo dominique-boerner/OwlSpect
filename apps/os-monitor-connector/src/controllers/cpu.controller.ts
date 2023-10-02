@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import cpuService from "./../services/cpu.service.ts";
-import { ConnectorResponse } from "../../../shared/models/connector-response.interface.ts";
-import { Cpu } from "../../../shared/models/cpu.interface.ts";
+import cpuService from "./../services/cpu.service";
+import { ConnectorResponse } from "../../../shared/models/connector-response.interface";
+import { Cpu } from "../../../shared/models/cpu.interface";
 import { StatusCodes } from "http-status-codes";
-import { logger, LogLevels } from "../util/logger.util.ts";
+import { logger, LogLevels } from "../util/logger.util";
 
 async function getCpuCores(req: Request, res: Response) {
   try {

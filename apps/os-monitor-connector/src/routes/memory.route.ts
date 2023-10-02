@@ -1,6 +1,6 @@
 import express from "express";
-import memoryController from "../controllers/memory.controller.ts";
-import { registerRoute } from "../util/route.util.ts";
+import memoryController from "../controllers/memory.controller";
+import { registerRoute } from "../util/route.util";
 
 const router = express();
 

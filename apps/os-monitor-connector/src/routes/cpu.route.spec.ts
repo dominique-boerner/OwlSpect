@@ -1,6 +1,6 @@
-import { ConnectorResponse } from "../../../shared/models/connector-response.interface.ts";
-import { application } from "./../index.ts";
-import { Cpu } from "../../../shared/models/cpu.interface.ts";
+import { ConnectorResponse } from "../../../shared/models/connector-response.interface";
+import { application } from "../index";
+import { Cpu } from "../../../shared/models/cpu.interface";
 
 const supertest = require("supertest");
 

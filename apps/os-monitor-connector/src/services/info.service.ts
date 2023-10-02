@@ -1,5 +1,5 @@
 import os from "node:os";
-import { Os } from "../../../shared/models/machine-information.interface.js";
+import { Os } from "../../../shared/models/machine-information.interface";
 
 /**
  * Get the hostname current system.

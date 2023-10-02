@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import { ConnectorResponse } from "../../../shared/models/connector-response.interface.ts";
+import { ConnectorResponse } from "../../../shared/models/connector-response.interface";
 import { StatusCodes } from "http-status-codes";
-import infoService from "../services/info.service.ts";
-import { MachineInformation } from "../../../shared/models/machine-information.interface.ts";
-import { logger, LogLevels } from "../util/logger.util.ts";
+import infoService from "../services/info.service";
+import { MachineInformation } from "../../../shared/models/machine-information.interface";
+import { logger, LogLevels } from "../util/logger.util";
 
 async function getInformation(req: Request, res: Response) {
   try {

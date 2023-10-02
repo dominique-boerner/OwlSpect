@@ -1,4 +1,4 @@
-import { getRegisteredRoutes } from "../util/route.util.ts";
+import { getRegisteredRoutes } from "../util/route.util";
 
 async function getCapabilities(): Promise<any> {
   try {

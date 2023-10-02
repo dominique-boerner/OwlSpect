@@ -1,6 +1,6 @@
 import express from "express";
-import networkController from "../controllers/network.controller.ts";
-import { registerRoute } from "../util/route.util.ts";
+import networkController from "../controllers/network.controller";
+import { registerRoute } from "../util/route.util";
 
 const router = express();
 

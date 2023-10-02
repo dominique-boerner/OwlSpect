@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { logger, LogLevels } from "./logger.util.ts";
+import { logger, LogLevels } from "./logger.util";
 
 // todo: reduce basePath and path into only one property.
 interface Route {
