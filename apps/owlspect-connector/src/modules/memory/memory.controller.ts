@@ -1,7 +1,7 @@
 import { Controller, Get } from '@nestjs/common';
 import { MemoryService } from './memory.service';
 import { StatusCodes } from 'http-status-codes';
-import { MemoryResponse } from './memory.interface';
+import { MemoryResponse } from '../../../../shared/models/memory.interface';
 
 @Controller({
   path: 'memory',

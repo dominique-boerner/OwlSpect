@@ -1,12 +1,12 @@
-import { CpuInfo } from "os";
-import { ConnectorResponse } from "./connector-response.interface";
+import { ApiResponse } from "./api-response.interface";
+import { Systeminformation } from "systeminformation";
 
-export type CpuSpeed = {
-  averageSpeedMhz: number;
-  averageSpeedGhz: number;
-};
+/**
+ * Contains information about the cpu of the host system.
+ */
+type Cpu = Systeminformation.CpuData;
 
-export type CpuResponse = ConnectorResponse<{
-  cpus: CpuInfo[];
-  averageSpeed: CpuSpeed;
-}>;
+/**
+ * Represents the response, which is sent from the API if cpu is called.
+ */
+export type CpuResponse = ApiResponse<Cpu>;

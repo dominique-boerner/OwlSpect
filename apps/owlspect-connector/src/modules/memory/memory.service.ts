@@ -1,7 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { Systeminformation } from 'systeminformation';
-const si = require('systeminformation');
+const systeminformation = require('systeminformation');
 
+/**
+ * Service for getting memory specific information from the host system.
+ */
 @Injectable()
 export class MemoryService {
   /**
@@ -9,7 +12,7 @@ export class MemoryService {
    */
   async getMemoryData(): Promise<Systeminformation.MemData> {
     try {
-      return si.mem();
+      return systeminformation.mem();
     } catch (e) {
       throw e;
     }

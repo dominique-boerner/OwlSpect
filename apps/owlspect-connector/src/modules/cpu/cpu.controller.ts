@@ -1,7 +1,7 @@
 import { Controller, Get } from '@nestjs/common';
 import { CpuService } from './cpu.service';
 import { StatusCodes } from 'http-status-codes';
-import { CpuResponse } from './cpu.interface';
+import { CpuResponse } from '../../../../shared/models/cpu.interface';
 
 @Controller({
   path: 'cpu',

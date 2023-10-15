@@ -1,7 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { Systeminformation } from 'systeminformation';
-const si = require('systeminformation');
+const systeminformation = require('systeminformation');
 
+/**
+ * Service for getting cpu specific information from the host system.
+ */
 @Injectable()
 export class CpuService {
   /**
@@ -9,7 +12,7 @@ export class CpuService {
    */
   async getCpuData(): Promise<Systeminformation.CpuData> {
     try {
-      return si.cpu();
+      return systeminformation.cpu();
     } catch (e) {
       throw e;
     }
