@@ -1,8 +1,8 @@
 <script setup lang="ts">
 interface AppBarProps {
-  canNavigateBack: boolean;
+  canNavigateBack?: boolean;
 }
-withDefaults<AppBarProps>(defineProps<AppBarProps>(), {
+withDefaults(defineProps<AppBarProps>(), {
   canNavigateBack: false,
 });
 </script>

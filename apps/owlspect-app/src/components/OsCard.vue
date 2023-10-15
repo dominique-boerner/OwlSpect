@@ -9,7 +9,7 @@ interface OsCardProps {
   severity?: OsCardSeverity;
 }
 
-withDefaults<OsCardProps>(defineProps<OsCardProps>(), {
+withDefaults(defineProps<OsCardProps>(), {
   title: "",
   value: "",
   additionalInfo: "",

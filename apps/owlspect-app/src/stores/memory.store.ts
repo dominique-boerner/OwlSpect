@@ -3,14 +3,16 @@ import { defineStore } from "pinia";
 import axios from "axios";
 import { useByteConverter } from "@/composables/byte-converter.composable";
 import { useAuthStore } from "@/stores/auth.store";
+import type { MemoryResponse } from "owlspect-shared/public-api";
+import { isNullOrUndefined } from "@/utils/vue-ref.util";
 
 export const useMemoryStore = defineStore("memoryStore", () => {
   const byteConverter = useByteConverter();
   const authStore = useAuthStore();
 
-  const memory = ref();
+  const memory = ref<MemoryResponse>();
   const hasError = ref(false);
-  const isLoading = ref(false);
+  const isLoading = ref(true);
   const fetchInterval = ref(1000);
 
   onMounted(async () => {
@@ -20,7 +22,6 @@ export const useMemoryStore = defineStore("memoryStore", () => {
 
   async function fetchMemory() {
     try {
-      const loadingTimeout = setTimeout(() => (isLoading.value = true), 1000);
       const response = (
         await axios.get("http://localhost:3000/memory", {
           headers: {
@@ -28,10 +29,9 @@ export const useMemoryStore = defineStore("memoryStore", () => {
           },
         })
       ).data;
-      clearTimeout(loadingTimeout);
+      memory.value = response;
       isLoading.value = false;
       hasError.value = false;
-      memory.value = response.data;
     } catch (e) {
       isLoading.value = false;
       hasError.value = true;
@@ -41,8 +41,18 @@ export const useMemoryStore = defineStore("memoryStore", () => {
 
   function getMemoryUsage(): string {
     try {
-      const usage = memory.value.used;
-      const total = memory.value.total;
+      if (isLoading.value || hasError.value) {
+        return "";
+      }
+
+      if (isNullOrUndefined(memory)) {
+        return "";
+      }
+
+      const memoryValue = memory.value as MemoryResponse;
+
+      const usage = memoryValue.data.used;
+      const total = memoryValue.data.total;
       const percentage = ((usage / total) * 100).toFixed(1);
 
       return `${percentage} %`;
@@ -53,13 +63,18 @@ export const useMemoryStore = defineStore("memoryStore", () => {
 
   function getMemoryCapacity(): string {
     try {
-      const memoryValue = memory.value;
-      if (!memoryValue) {
+      if (isLoading.value || hasError.value) {
         return "";
       }
 
-      const totalMemory = memoryValue.total;
-      const freeMemory = memoryValue.free;
+      if (isNullOrUndefined(memory)) {
+        return "";
+      }
+
+      const memoryValue = memory.value as MemoryResponse;
+
+      const totalMemory = memoryValue.data.total;
+      const freeMemory = memoryValue.data.free;
 
       const usedRam = byteConverter.formatBytes(totalMemory - freeMemory);
       const totalRam = byteConverter.formatBytes(totalMemory);
@@ -69,31 +84,11 @@ export const useMemoryStore = defineStore("memoryStore", () => {
     }
   }
 
-  function getRamThresholds() {
-    // TODO: implement severity later
-    return {
-      low: {
-        min: 0,
-        max: 40,
-      },
-      medium: {
-        min: 41,
-        max: 75,
-      },
-      high: {
-        min: 76,
-        max: 100,
-      },
-    };
-  }
-
   return {
     memory,
     isLoading,
     hasError,
     getMemoryUsage,
     getMemoryCapacity,
-    fetchMemory,
-    getRamThresholds,
   };
 });
