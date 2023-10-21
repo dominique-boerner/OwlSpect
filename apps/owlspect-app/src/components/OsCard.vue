@@ -7,29 +7,32 @@ interface OsCardProps {
   additionalInfo?: string;
   isLoading?: boolean;
   severity?: OsCardSeverity;
+  hasChart?: boolean;
 }
 
 withDefaults(defineProps<OsCardProps>(), {
-  title: "",
-  value: "",
   additionalInfo: "",
   isLoading: false,
   severity: "low",
+  hasChart: false,
 });
 </script>
 <template>
   <div
-    class="border-2 rounded-lg aspect-square"
+    class="rounded-lg aspect-square w-full h-full shadow-lg"
     :class="{
       'animate-pulse': isLoading,
+      'aspect-auto': hasChart,
     }"
   >
-    <div class="flex flex-col py-4 h-full justify-between">
-      <div class="flex flex-col px-2">
-        <span class="font-bold">
+    <div class="flex flex-col py-4 justify-between w-full h-full">
+      <div class="flex flex-col px-2 h-full">
+        <span v-if="title" class="font-bold">
           {{ title }}
         </span>
+        <slot name="content" />
         <span
+          v-if="value"
           class="font-bold text-4xl"
           :class="{
             'text-danger': severity === 'high',
