@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Systeminformation } from 'systeminformation';
+
 const systeminformation = require('systeminformation');
 
 /**
