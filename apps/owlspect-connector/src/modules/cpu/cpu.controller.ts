@@ -22,7 +22,7 @@ export class CpuController {
   @Get()
   async getCpuData(): Promise<CpuResponse> {
     try {
-      const data = await this.cpuService.getCpuData();
+      const data = await this.cpuService.calculateCpuInformation();
       return {
         status: StatusCodes.OK,
         data,
